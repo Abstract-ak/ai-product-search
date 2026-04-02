@@ -2,7 +2,9 @@ const { Product, Category, sequelize } = require("../models");
 const { Op } = require("sequelize");
 const parseQuery = require("../utils/queryParser");
 
-exports.searchProducts = async (query) => {
+exports.searchProducts = async (query, options = {}) => {
+  const limit = Number.isInteger(options.limit) ? options.limit : 10;
+  const offset = Number.isInteger(options.offset) ? options.offset : 0;
   const categories = await Category.findAll({ attributes: ["name"] });
   const categoryNames = categories.map((c) => c.name).filter(Boolean);
 
@@ -45,7 +47,7 @@ exports.searchProducts = async (query) => {
     ];
   }
 
-  const results = await Product.findAll({
+  const results = await Product.findAndCountAll({
     where,
     include: [
       {
@@ -55,6 +57,9 @@ exports.searchProducts = async (query) => {
           : undefined,
       },
     ],
+    limit,
+    offset,
+    distinct: true,
   });
 
   return results;

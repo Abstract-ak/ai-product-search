@@ -38,7 +38,7 @@ Create a `.env` file:
 
 ### Search (Protected)
 
-- `GET /api/search?q=cheap laptop under 50000`
+- `GET /api/search?q=cheap laptop under 50000&page=1&limit=10`
 
 Search flow:
 
@@ -60,7 +60,7 @@ NLP parsing rules:
 
 ### Products (Protected)
 
-- `GET /api/products`
+- `GET /api/products?page=1&limit=10`
 - `POST /api/products` (ADMIN)
 - `PUT /api/products/:id` (ADMIN)
 - `DELETE /api/products/:id` (ADMIN)
@@ -68,7 +68,7 @@ NLP parsing rules:
 ### Dashboard (Protected)
 
 - `GET /api/dashboard/overview` (SUPER_ADMIN)
-- `GET /api/dashboard/products` (MANAGER)
+- `GET /api/dashboard/products?page=1&limit=10` (MANAGER)
 
 ## Roles
 
