@@ -28,6 +28,7 @@ Create a `.env` file:
 - `DB_PASSWORD=...`
 - `DB_NAME=...`
 - `JWT_SECRET=...`
+- `REDIS_URL=redis://localhost:6379`
 
 ## API Endpoints
 
@@ -69,6 +70,10 @@ NLP parsing rules:
 
 - `GET /api/dashboard/overview` (SUPER_ADMIN)
 - `GET /api/dashboard/products?page=1&limit=10` (MANAGER)
+
+## Caching
+
+Product list responses are cached in Redis for 30 seconds and invalidated on product create/update/delete.
 
 ## Roles
 
