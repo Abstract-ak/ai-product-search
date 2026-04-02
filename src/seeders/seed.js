@@ -1,7 +1,45 @@
-const { sequelize, Category, Product } = require("../models");
+const bcrypt = require("bcrypt");
+const { sequelize, User, Category, Product } = require("../models");
 
 const seed = async () => {
   await sequelize.sync({ force: true });
+
+  // Users (roles)
+  const defaultPassword = "Password@123";
+  const hashedPassword = await bcrypt.hash(defaultPassword, 10);
+
+  await User.bulkCreate([
+    {
+      name: "Super Admin",
+      email: "superadmin@test.com",
+      password: hashedPassword,
+      role: "SUPER_ADMIN",
+    },
+    {
+      name: "Admin",
+      email: "admin@test.com",
+      password: hashedPassword,
+      role: "ADMIN",
+    },
+    {
+      name: "Manager",
+      email: "manager@test.com",
+      password: hashedPassword,
+      role: "MANAGER",
+    },
+    {
+      name: "Employee",
+      email: "employee@test.com",
+      password: hashedPassword,
+      role: "EMPLOYEE",
+    },
+    {
+      name: "User",
+      email: "user@test.com",
+      password: hashedPassword,
+      role: "USER",
+    },
+  ]);
 
   // Categories
   const categories = await Category.bulkCreate([
@@ -104,6 +142,9 @@ const seed = async () => {
   ]);
 
   console.log("✅ Database Seeded Successfully!");
+  console.log(
+    `Seed users created (password: ${defaultPassword}): superadmin@test.com, admin@test.com, manager@test.com, employee@test.com, user@test.com`,
+  );
 };
 
 seed();

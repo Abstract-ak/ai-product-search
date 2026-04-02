@@ -1,9 +1,23 @@
-const { Product, Category } = require("../models");
+const { Product, Category, sequelize } = require("../models");
 const { Op } = require("sequelize");
 const parseQuery = require("../utils/queryParser");
 
 exports.searchProducts = async (query) => {
-  const parsed = parseQuery(query);
+  const categories = await Category.findAll({ attributes: ["name"] });
+  const categoryNames = categories.map((c) => c.name).filter(Boolean);
+
+  const colorRows = await Product.findAll({
+    attributes: [[sequelize.fn("DISTINCT", sequelize.col("color")), "color"]],
+    raw: true,
+  });
+  const colorNames = colorRows
+    .map((row) => row.color)
+    .filter((c) => typeof c === "string" && c.trim().length > 0);
+
+  const parsed = parseQuery(query, {
+    categories: categoryNames,
+    colors: colorNames,
+  });
 
   const where = {};
 
