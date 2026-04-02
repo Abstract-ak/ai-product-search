@@ -48,6 +48,16 @@ Search flow:
 4. Fetch products + category
 5. Return JSON
 
+NLP parsing rules:
+
+- Price filters:
+  - Max: `under 50000`, `below 50k`, `less than 50000`
+  - Min: `above 10000`, `over 10k`, `more than 5000`
+  - Range: `between 10000 and 30000`
+  - Supports `k`/`m` suffixes (e.g., `50k`, `1.5m`)
+- Category and color are matched from DB values (no hardcoded lists)
+- Generic words like `cheap`, `best`, `buy`, `search` are ignored as keywords
+
 ### Products (Protected)
 
 - `GET /api/products`

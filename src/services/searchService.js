@@ -22,8 +22,14 @@ exports.searchProducts = async (query) => {
   const where = {};
 
   // Price filter
-  if (parsed.maxPrice) {
-    where.price = { [Op.lte]: parsed.maxPrice };
+  if (parsed.minPrice !== null || parsed.maxPrice !== null) {
+    where.price = {};
+    if (parsed.minPrice !== null) {
+      where.price[Op.gte] = parsed.minPrice;
+    }
+    if (parsed.maxPrice !== null) {
+      where.price[Op.lte] = parsed.maxPrice;
+    }
   }
 
   // Color filter
