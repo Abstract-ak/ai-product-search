@@ -12,7 +12,7 @@ Backend system for searching products using natural-language queries, with JWT a
 
 1. Install dependencies:
    - `npm install`
-2. Create `.env` (see `.env.example`).
+2. Create `.env`.
 3. Seed database:
    - `node src/seeders/seed.js`
 4. Start server:
