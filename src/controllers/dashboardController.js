@@ -15,3 +15,12 @@ exports.getOverview = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.getProducts = async (req, res) => {
+  try {
+    const products = await Product.findAll({ include: Category });
+    res.json({ count: products.length, data: products });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
