@@ -21,8 +21,14 @@ exports.register = async (req, res) => {
       password: hashedPassword,
     });
 
-    return res.json(user);
+    const safeUser = user.toJSON();
+    delete safeUser.password;
+
+    return res.status(201).json(safeUser);
   } catch (error) {
+    if (error?.name === "SequelizeUniqueConstraintError") {
+      return res.status(409).json({ message: "Email already registered" });
+    }
     logError("Register error", error);
     return res.status(500).json({ message: "Failed to register user" });
   }
@@ -48,7 +54,10 @@ exports.login = async (req, res) => {
 
     const token = generateToken(user);
 
-    return res.json({ token });
+    const safeUser = user.toJSON();
+    delete safeUser.password;
+
+    return res.json({ token, user: safeUser });
   } catch (error) {
     logError("Login error", error);
     return res.status(500).json({ message: "Failed to login" });
