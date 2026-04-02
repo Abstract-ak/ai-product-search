@@ -3,31 +3,53 @@ const { User } = require("../models");
 const { generateToken } = require("../utils/jwt");
 
 exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
+  try {
+    const { name, email, password } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+    if (!name || !email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Name, email, and password are required" });
+    }
 
-  const user = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-  });
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  res.json(user);
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    return res.json(user);
+  } catch (error) {
+    console.error("Register error:", error);
+    return res.status(500).json({ message: "Failed to register user" });
+  }
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ where: { email } });
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
+    }
 
-  if (!user) return res.status(404).json({ message: "User not found" });
+    const user = await User.findOne({ where: { email } });
 
-  const isMatch = await bcrypt.compare(password, user.password);
+    if (!user) return res.status(404).json({ message: "User not found" });
 
-  if (!isMatch) return res.status(400).json({ message: "Wrong password" });
+    const isMatch = await bcrypt.compare(password, user.password);
 
-  const token = generateToken(user);
+    if (!isMatch) return res.status(400).json({ message: "Wrong password" });
 
-  res.json({ token });
+    const token = generateToken(user);
+
+    return res.json({ token });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ message: "Failed to login" });
+  }
 };
