@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const { User } = require("../models");
 const { generateToken } = require("../utils/jwt");
+const { logError } = require("../utils/logger");
 
 exports.register = async (req, res) => {
   try {
@@ -22,7 +23,7 @@ exports.register = async (req, res) => {
 
     return res.json(user);
   } catch (error) {
-    console.error("Register error:", error);
+    logError("Register error", error);
     return res.status(500).json({ message: "Failed to register user" });
   }
 };
@@ -49,7 +50,7 @@ exports.login = async (req, res) => {
 
     return res.json({ token });
   } catch (error) {
-    console.error("Login error:", error);
+    logError("Login error", error);
     return res.status(500).json({ message: "Failed to login" });
   }
 };
