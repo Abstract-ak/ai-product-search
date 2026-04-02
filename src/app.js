@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const productRoutes = require("./routes/productRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 dotenv.config();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/search", searchRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("API Running...");
