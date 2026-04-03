@@ -2,6 +2,14 @@
 
 Backend system for searching products using natural-language queries, with JWT authentication and role-based access.
 
+## Assignment Specialization
+
+- Natural-language query parsing (price range, category, color, keyword)
+- Sorting Products
+- Pagination for list and search endpoints (page/limit)
+- Redis caching for product list responses with TTL + invalidation
+- Role-based access control for protected routes
+
 ## Tech
 
 - Node.js + Express
