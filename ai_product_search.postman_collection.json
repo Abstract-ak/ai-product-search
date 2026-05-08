@@ -1,0 +1,491 @@
+{
+  "info": {
+    "_postman_id": "ee4a6d58-1650-4ff2-a78a-e4ab906bfadc",
+    "name": "ai_product_search",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20131151"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"sachin\",\r\n  \"email\": \"sachinsah@quiz.com\",\r\n  \"password\": \"sachin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"sachinsah@quiz.com\",\r\n  \"password\": \"sachin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login-manager",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"manager@test.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login-admin",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@test.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login-superAdmin",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"superadmin@test.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "item": [
+        {
+          "name": "create-product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzc1MTQ5Njc1LCJleHAiOjE3NzUyMzYwNzV9.2-GfvQ_raJAqVbLBidv8WKeZ5Y7hvWYEakEVJKxC9N8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate Notebook\",\r\n  \"price\": 149,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"writing notebook\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzc1MTQ5Njc1LCJleHAiOjE3NzUyMzYwNzV9.2-GfvQ_raJAqVbLBidv8WKeZ5Y7hvWYEakEVJKxC9N8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate watch\",\r\n  \"price\": 1499,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"watch the time\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products/15",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products",
+                "15"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "product-delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzc1MTQ5Njc1LCJleHAiOjE3NzUyMzYwNzV9.2-GfvQ_raJAqVbLBidv8WKeZ5Y7hvWYEakEVJKxC9N8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate watch\",\r\n  \"price\": 1499,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"watch the time\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view-products",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzc1MTQ5Njc1LCJleHAiOjE3NzUyMzYwNzV9.2-GfvQ_raJAqVbLBidv8WKeZ5Y7hvWYEakEVJKxC9N8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate Notebook\",\r\n  \"price\": 149,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"writing notebook\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:5000/api/products",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IlNVUEVSX0FETUlOIiwiaWF0IjoxNzc1MTUwMzYzLCJleHAiOjE3NzUyMzY3NjN9.SdVmbtOzbIvF4kJH2KPtOJ6G7UN8pPer_859RQJ47D0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate watch\",\r\n  \"price\": 1499,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"watch the time\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "item": [
+        {
+          "name": "admin product-overview",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IlNVUEVSX0FETUlOIiwiaWF0IjoxNzc1MTUwMzYzLCJleHAiOjE3NzUyMzY3NjN9.SdVmbtOzbIvF4kJH2KPtOJ6G7UN8pPer_859RQJ47D0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate watch\",\r\n  \"price\": 1499,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"watch the time\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/dashboard/overview",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "dashboard",
+                "overview"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:5000/api/dashboard/products",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6Ik1BTkFHRVIiLCJpYXQiOjE3NzUxNTAyMTMsImV4cCI6MTc3NTIzNjYxM30.-yysnGfgWx4FQlF1aNvuPSvoHxqc2TnilqQstRysFxs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"classmate watch\",\r\n  \"price\": 1499,\r\n  \"color\": \"white\",\r\n  \"category_id\": 4,\r\n  \"description\": \"watch the time\",\r\n  \"tags\": \"watch,tvs,performance\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/dashboard/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "dashboard",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:5000/api/search",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzc1MTQyMTU2LCJleHAiOjE3NzUyMjg1NTZ9.TsRl-D1BIETYLufk5lT3upfK_3IxXdxsobwRRtLB4Dk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Akash\",\r\n  \"email\": \"akash@test.com\",\r\n  \"password\": \"123456\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/search?q=shoes between 2k and 4000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "shoes between 2k and 4000"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
